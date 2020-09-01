@@ -3,7 +3,7 @@
 namespace View;
 
 class NotFound {
-    public function render($user = null) {
+    public function render() {
         echo '<h2>404, Oopsy!</h2>';
     }
 }
