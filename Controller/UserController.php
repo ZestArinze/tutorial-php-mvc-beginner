@@ -15,13 +15,20 @@ class UserController {
     }
 
     public function getUser(int $userId) {
-        
+
         // user id must be greater than zero
         // you can add more of your own validations
         if($userId <= 0) {
             ViewLoader::load('404');
         }
 
-        return ViewLoader::load('user', DB::getUser($userId));
+        $user = DB::getUser($userId);
+
+        // if no user exists for that userId
+        if(!$user) {
+            ViewLoader::load('404');
+        }
+
+        return ViewLoader::load('user', $user);
     }
 }
